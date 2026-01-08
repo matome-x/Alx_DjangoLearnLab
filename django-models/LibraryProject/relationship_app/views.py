@@ -2,11 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView
 from .models import Book, Library  
 from .models import Library
-
-
 # -----------------------------
-# Function-Based View: List all books
-# -----------------------------
+# Function-Based View: List all booksd
 def list_books(request):
     books = Book.objects.all()
     return render(request, 'relationship_app/list_books.html', {'books': books})
@@ -17,5 +14,5 @@ def list_books(request):
 # -----------------------------
 class LibraryDetailView(DetailView):
     model = Library
-    template_name = 'relationship_app/library_detail.html'  # must match template path
-    context_object_name = 'library'
+    template_name = 'relationship_app/library_detail.html'  # must match check
+    context_object_name = 'library';
