@@ -4,6 +4,7 @@ from django.views.generic import DetailView
 from .models import Book, Library
 
 
+
 # -----------------------------
 # Function-Based View: List all books
 # -----------------------------
