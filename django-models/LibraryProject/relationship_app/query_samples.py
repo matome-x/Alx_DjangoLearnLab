@@ -6,7 +6,7 @@ django.setup()
 
 from relationship_app.models import Author, Book, Library, Librarian
 
-# Sample data creation (only run once)
+# Sample data creation (run once)
 def create_sample_data():
     # Authors
     author1 = Author.objects.create(name="J.K. Rowling")
@@ -28,13 +28,14 @@ def create_sample_data():
     Librarian.objects.create(name="Alice", library=library1)
     Librarian.objects.create(name="Bob", library=library2)
 
-# Query examples using variables
+# Query examples
 def run_queries():
-    # 1. Query all books by a specific author
+    # 1. Query all books by a specific author using objects.filter()
     author_name = "J.K. Rowling"
     author = Author.objects.get(name=author_name)
+    books_by_author = Book.objects.filter(author=author)
     print(f"Books by {author_name}:")
-    for book in author.books.all():
+    for book in books_by_author:
         print("-", book.title)
 
     # 2. List all books in a specific library
