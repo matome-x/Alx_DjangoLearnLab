@@ -45,9 +45,10 @@ def run_queries():
     for book in library.books.all():
         print("-", book.title)
 
-    # 3. Retrieve the librarian for a library
+    # 3. Retrieve the librarian for a library using Librarian.objects.get()
+    librarian = Librarian.objects.get(library=library)
     print(f"\nLibrarian for {library_name}:")
-    print(library.librarian.name)
+    print(librarian.name)
 
 if __name__ == "__main__":
     # Uncomment this line the first time to create sample data
