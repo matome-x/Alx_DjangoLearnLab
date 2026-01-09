@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render, redirect
+from django.contrib.auth import login
 
 # Function-based view: list all books
 def list_books(request):
@@ -33,8 +34,9 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')
+            user = form.save()
+            login(request, user)   
+            return redirect('/')
     else:
         form = UserCreationForm()
 
